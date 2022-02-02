@@ -66,21 +66,27 @@ public class GameService {
     }
 
     public int move(Board board, String dir) {
-        if (dir == "L" || dir == "R") {
+        if (dir.equals("L") || dir.equals("R")) {
             board.transpose();
         }
-        if (dir == "D" || dir == "R") {
+        if (dir.equals("D") || dir.equals("R")) {
             board.reverse();
-        }
-        moveUp(board);
-        if (dir == "D" || dir == "R") {
-            board.reverse();
-        }
-        if (dir == "L" || dir == "R") {
-            board.transpose();
         }
         board.printBoard();
-        return validate(board);
+        moveUp(board);
+        if (dir.equals("D") || dir.equals("R")) {
+            board.reverse();
+        }
+        if (dir.equals("L") || dir.equals("R")) {
+            board.transpose();
+        }
+        
+        int flag =  validate(board);
+        if(flag==1){
+            addTile(board);
+        }
+        board.printBoard();
+        return flag;
     }
 
     public int validate(Board board){

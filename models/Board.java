@@ -36,7 +36,7 @@ public class Board{
     }
 
     public void setCell(Cell cell, int number){
-        board[cell.getX()][cell.getY()] = number;
+        this.board[cell.getX()][cell.getY()] = number;
     }
 
     public boolean isEmpty(Cell cell){
@@ -90,7 +90,7 @@ public class Board{
                     System.out.print("_ ");
                 }
                 else{
-                    System.out.print(getCell(cell));
+                    System.out.print(getCell(cell)+" ");
                 }
             }
             System.out.println();

@@ -6,9 +6,6 @@ import models.Board;
 import service.GameService;
 
 public class Game {
-    
-    
-
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in); 
         System.out.print("Enter the size of board: ");
@@ -24,9 +21,10 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         int flag = 1;
         String curInput = "";
-        while(flag==1 && curInput!="e"){
-            System.out.println("Enter the Move: ");
+        while(flag==1 && !curInput.equals("e")){
+            System.out.print("Enter the Move: ");
             curInput =  sc.nextLine();
+            System.out.print(curInput);
             flag = service.move(board, curInput);
         }
         sc.close();
