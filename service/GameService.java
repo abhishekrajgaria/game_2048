@@ -65,21 +65,39 @@ public class GameService {
         board.setScore(board.getScore()+newScore);
     }
 
-    public void move(Board board, char dir) {
-        if (dir == 'L' || dir == 'R') {
+    public int move(Board board, String dir) {
+        if (dir == "L" || dir == "R") {
             board.transpose();
         }
-        if (dir == 'D' || dir == 'R') {
+        if (dir == "D" || dir == "R") {
             board.reverse();
         }
         moveUp(board);
-        if (dir == 'D' || dir == 'R') {
+        if (dir == "D" || dir == "R") {
             board.reverse();
         }
-        if (dir == 'L' || dir == 'R') {
+        if (dir == "L" || dir == "R") {
             board.transpose();
         }
         board.printBoard();
+        return validate(board);
+    }
+
+    public int validate(Board board){
+        if(board.emptyCells().size()>0){
+            for(int x=0;x<board.getSize();x++){
+                for(int y=0;y<board.getSize();y++){
+                    Cell cell = new Cell(x,y);
+                    if(board.getCell(cell)==2048){
+                        return 2;
+                    }
+                }
+            }
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
 
 }
