@@ -55,4 +55,23 @@ public class Board{
         }
         return result;
     }
+
+    public void printBoard(){
+        System.out.println("******************************");
+        for(int i=0;i<getSize();i++){
+            for(int j=0;j<getSize();j++){
+                Cell cell = new Cell(i,j);
+                if(isEmpty(cell)){
+                    System.out.print("_ ");
+                }
+                else{
+                    System.out.print(getCell(cell));
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Score: " + this.score);
+        System.out.println("******************************");
+    }
 }
